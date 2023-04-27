@@ -1,5 +1,5 @@
 import React from 'react';
-import { CheckBoxProps } from '../../@types';
+import { CheckBoxProps } from '../../@types/todo';
 import CheckBoxContainer from './style';
 
 function CheckBox({ className, checked, onClick }: CheckBoxProps) {
