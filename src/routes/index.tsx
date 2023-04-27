@@ -1,11 +1,12 @@
 import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { Main, TodoList, SignUp, SignIn } from '../pages';
+import Auth from './Auth';
 
 const router = createBrowserRouter([
   {
     path: '/',
-    // element: <Auth />,
+    element: <Auth />,
     children: [
       {
         path: '',
