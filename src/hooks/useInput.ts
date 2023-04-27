@@ -7,14 +7,11 @@ export default function useInput(initialState: FormProps) {
   const [form, setForm] = useState(initialState);
 
   const onChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
-    if (!e) {
-      return;
-    }
+    if (!e) return;
 
     const { name, value } = e.target;
-
     setForm({ ...form, [name]: value });
   };
-
-  return [form, onChangeForm, setForm];
+  const clear = () => setForm(initialState);
+  return { form, onChangeForm, setForm, clear };
 }
