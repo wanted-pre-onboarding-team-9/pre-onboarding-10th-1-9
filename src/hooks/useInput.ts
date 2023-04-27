@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { AuthProps, TodoProps } from '../@types';
+import { AuthProps, TodoProps } from '../@types/response';
 
 type FormProps = AuthProps | TodoProps;
 
