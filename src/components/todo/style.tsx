@@ -2,8 +2,10 @@ import styled from 'styled-components';
 import { TextInputStyleProps } from '../../@types/todo';
 
 export const CheckBoxContainer = styled.div`
-  width: 35px;
-  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 5px;
 `;
 
 export const ButtonContainer = styled.button`
@@ -19,6 +21,8 @@ export const ButtonContainer = styled.button`
   font-weight: 600;
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   transition: 0.3s;
+  margin-left: 10px;
+  margin-bottom: 10px;
 
   &:disabled {
     opacity: 0.5;
