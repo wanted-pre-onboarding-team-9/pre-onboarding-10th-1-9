@@ -9,7 +9,6 @@ const instance = axios.create({
   },
 });
 
-// Add a request interceptor
 instance.interceptors.request.use(
   (config: InternalAxiosRequestConfig): InternalAxiosRequestConfig => {
     const accesstoken = token.get();
@@ -23,8 +22,7 @@ instance.interceptors.request.use(
   },
 );
 
-// Add a response interceptor
-axios.interceptors.response.use(
+instance.interceptors.response.use(
   (response) => {
     return response;
   },
