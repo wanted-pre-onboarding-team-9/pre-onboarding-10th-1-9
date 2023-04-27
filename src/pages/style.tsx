@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   width: 100%;
   min-height: 100vh;
   margin: 0 auto;
-`
+`;
 
 export const Title = styled.h1`
   display: block;
