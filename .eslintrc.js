@@ -13,6 +13,12 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    'react/jsx-uses-react': 'off',
+    'react/react-in-jsx-scope': 'off',
+    'react/function-component-definition': [
+      2,
+      { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
+    ],
   },
   settings: {
     'import/resolver': {
