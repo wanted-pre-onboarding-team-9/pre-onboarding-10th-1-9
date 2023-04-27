@@ -1,6 +1,4 @@
 /* eslint-disable react/jsx-props-no-spreading */
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/function-component-definition */
 
 const Form = (props: React.FormHTMLAttributes<HTMLFormElement>) => {
   const { children, onSubmit } = props;

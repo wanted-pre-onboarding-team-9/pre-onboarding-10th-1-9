@@ -1,6 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/function-component-definition */
-
 import * as S from './style';
 
 type ErrorMessageProps = {

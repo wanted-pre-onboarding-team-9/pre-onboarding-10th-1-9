@@ -1,6 +1,4 @@
-/* eslint-disable react/react-in-jsx-scope */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-/* eslint-disable react/function-component-definition */
 
 import Input from '../commons/Input';
 

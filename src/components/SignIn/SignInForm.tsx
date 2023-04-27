@@ -1,6 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/function-component-definition */
-
 import { useState } from 'react';
 
 import Button from '../commons/Button';

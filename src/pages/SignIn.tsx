@@ -1,6 +1,3 @@
-/* eslint-disable react/react-in-jsx-scope */
-/* eslint-disable react/function-component-definition */
-
 import SignInForm from '../components/SignIn/SignInForm';
 
 import * as S from './style';
