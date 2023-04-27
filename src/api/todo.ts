@@ -1,26 +1,24 @@
-import axios from 'axios';
 import ApiUrl from './ApiUrl';
 import instance from '.';
 import { TodoProps } from '../@types/response';
 
 export const getTodoData = async () => {
-  const todoArr = await instance.get(ApiUrl.todo);
-  return todoArr;
+  const { data } = await instance.get(ApiUrl.todo);
+  return data;
 };
 
 export const removeTodo = async (id: number) => {
   await instance.delete(`${ApiUrl.todo}/${id}`);
 };
 
-export const updateTodo = async (todo: TodoProps, isChecked: boolean) => {
+export const updateTodo = async (todo: TodoProps) => {
   await instance.put(`${ApiUrl.todo}/${todo.id}`, {
     todo: todo.todo,
-    isCompleted: isChecked,
+    isCompleted: todo?.isCompleted,
   });
 };
 
 export const createTodoData = async (todo: string) => {
-  await axios.post(ApiUrl.todo, { todo }).then((res) => {
-    return res.data;
-  });
+  const { data } = await instance.post(ApiUrl.todo, { todo });
+  return data;
 };
