@@ -1,5 +1,5 @@
 import axios, { InternalAxiosRequestConfig } from 'axios';
-import { token } from '../utils';
+import token from '../utils/token';
 
 const instance = axios.create({
   baseURL: 'https://www.pre-onboarding-selection-task.shop/',

@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import { NotFound } from '../pages';
-import { token } from '../utils';
+import token from '../utils/token';
 
 const PRIVATE_ROUTES = ['/todo'];
 const PUBLIC_ROUTES = ['/', '/signin', '/signup'];
