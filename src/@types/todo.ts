@@ -1,10 +1,10 @@
-import { Ref } from 'react';
+import { TodoProps } from './response';
 
 export interface CheckBoxProps {
   className?: string;
-  checkboxRef: Ref<HTMLInputElement>;
   checked: boolean;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onClick: (e: React.MouseEvent<HTMLInputElement>) => void;
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
 export interface ButtonProps {
@@ -24,4 +24,15 @@ export interface TextInputProps {
 
 export interface TextInputStyleProps {
   width?: string;
+}
+
+export interface SingleTodoProps {
+  editingTodoId: number | null;
+  todoData: TodoProps;
+  updateEditingTodoId: (targetId: number | null) => void;
+  filterDeletedTodo: (targetId: number) => void;
+}
+
+export interface CreateTodoProps {
+  addNewTodo: (newTodo: TodoProps) => void;
 }

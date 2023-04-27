@@ -4,7 +4,7 @@ export interface AuthProps {
 }
 
 export interface TodoProps {
-  id: number;
+  id: number | undefined;
   todo: string;
   isCompleted: boolean;
   userId: number;
