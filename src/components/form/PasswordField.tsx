@@ -1,21 +1,18 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
-
-import Input from '../commons/Input';
+import * as S from './style';
 
 const PasswordField = ({
   value,
   onChange,
 }: Pick<React.InputHTMLAttributes<HTMLInputElement>, 'value' | 'onChange'>) => (
-  <label htmlFor="password">
-    <Input
-      id="password"
-      type="password"
-      value={value}
-      onChange={onChange}
-      placeholder="비밀번호는 8자 이상 입력해주세요."
-      data-testid="password-inpt"
-    />
-  </label>
+  <S.Input
+    id="password"
+    name="password"
+    type="password"
+    value={value}
+    onChange={onChange}
+    placeholder="비밀번호는 8자 이상 입력해주세요."
+    data-testid="password-input"
+  />
 );
 
 export default PasswordField;

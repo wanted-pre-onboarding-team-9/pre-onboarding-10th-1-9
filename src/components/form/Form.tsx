@@ -1,19 +1,17 @@
-/* eslint-disable react/jsx-props-no-spreading */
+import { FormEventHandler } from 'react';
 
-const Form = (props: React.FormHTMLAttributes<HTMLFormElement>) => {
-  const { children, onSubmit } = props;
+const Form = ({
+  children,
+  onSubmit,
+}: Pick<React.FormHTMLAttributes<HTMLFormElement>, 'onSubmit' | 'children'>) => {
+  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+    event.preventDefault();
+    if (onSubmit) {
+      onSubmit(event);
+    }
+  };
 
-  return (
-    <form
-      {...props}
-      onSubmit={(event) => {
-        event.preventDefault();
-        // TODO: onSubmit 이벤트 처리 추가되어야 함
-      }}
-    >
-      {children}
-    </form>
-  );
+  return <form onSubmit={handleSubmit}>{children}</form>;
 };
 
 export default Form;

@@ -36,3 +36,22 @@ export const NavigatorText = styled(Link)`
   color: #a2a2ff;
   font-weight: bold;
 `;
+
+export const Button = styled.button`
+  background: #4f46e5;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  height: 2.5rem;
+  cursor: pointer;
+
+  :hover {
+    background: #6666ff;
+  }
+
+  :disabled {
+    background: #a5a4f2;
+  }
+`;
