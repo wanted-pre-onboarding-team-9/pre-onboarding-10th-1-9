@@ -1,7 +1,7 @@
 class ApiUrl {
   static signUp = '/auth/signup';
 
-  static signIn = 'auth/signin';
+  static signIn = '/auth/signin';
 
   static todo = '/todos';
 }

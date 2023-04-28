@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom';
 import Form from '../components/form/Form';
 import EmailField from '../components/form/EmailField';
 import PasswordField from '../components/form/PasswordField';
@@ -8,15 +9,28 @@ import useForm from '../hooks/useForm';
 import { isInvalidEmail, isInvalidPassword } from '../utils/validators';
 
 import * as S from './style';
+import { signUp } from '../api/auth';
 
 const SignUp = () => {
   const { values, errors, isError, onChange } = useForm({
     initialValues: { email: '', password: '' },
     validators: { email: isInvalidEmail, password: isInvalidPassword },
   });
+  const navigate = useNavigate();
 
-  const onSignUp = () => {
-    // TODO: 추가하기!
+  const onSignUp = async () => {
+    const { email, password } = values;
+    if (typeof email !== 'string' || typeof password !== 'string') {
+      alert('[ERROR] 잘못된 입력입니다.');
+      return;
+    }
+    const { message, success } = await signUp({ email, password });
+    if (success) {
+      alert(message);
+      navigate('/signin');
+    } else {
+      alert(message);
+    }
   };
 
   return (
