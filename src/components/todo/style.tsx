@@ -68,3 +68,19 @@ export const CreateTodoContainer = styled.div`
     padding: 0px;
   }
 `;
+
+export const TodoLogoutContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+`;
+
+export const LogoutButton = styled.p`
+  color: #3f51b5;
+  text-decoration: underline;
+  font-size: 13px;
+
+  &:hover {
+    cursor: pointer;
+  }
+`;
