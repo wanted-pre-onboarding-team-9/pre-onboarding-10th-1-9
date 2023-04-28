@@ -11,9 +11,11 @@ const CreateTodo = ({ addNewTodo }: CreateTodoProps) => {
   const navigate = useNavigate();
 
   const createTodo = async () => {
-    const newTodo = await createTodoData(value);
-    addNewTodo(newTodo);
-    clear();
+    const res = await createTodoData(value);
+    if (res.isSuccess) {
+      addNewTodo(res.data);
+      clear();
+    }
   };
 
   const onClickLogout = () => {

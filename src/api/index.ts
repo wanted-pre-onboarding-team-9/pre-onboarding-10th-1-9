@@ -1,5 +1,6 @@
-import axios, { InternalAxiosRequestConfig } from 'axios';
+import axios, { AxiosError, InternalAxiosRequestConfig } from 'axios';
 import token from '../utils/token';
+import { APIError } from '../@types/api';
 
 const instance = axios.create({
   baseURL: 'https://www.pre-onboarding-selection-task.shop/',
@@ -22,14 +23,14 @@ instance.interceptors.request.use(
   },
 );
 
-instance.interceptors.response.use(
-  (response) => {
-    return response;
-  },
-
-  (error) => {
-    return Promise.reject(error);
-  },
-);
+export const createDefaultAPIError = (error: unknown): APIError => {
+  if (error instanceof AxiosError) {
+    return {
+      isSuccess: false,
+      message: error.response?.data.message,
+    };
+  }
+  return { isSuccess: false, message: '알 수 없는 에러입니다.' };
+};
 
 export default instance;
