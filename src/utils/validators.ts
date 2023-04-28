@@ -2,7 +2,7 @@ export const isInvalidEmail = (email: React.InputHTMLAttributes<HTMLInputElement
   if (typeof email !== 'string') {
     return '이메일 입력을 확인해 주세요.';
   }
-  if (!email.includes('@')) {
+  if (!email.includes('@') && email.length > 0) {
     return "이메일에는 '@'가 포함되어야 합니다.";
   }
   return null;
@@ -14,7 +14,7 @@ export const isInvalidPassword = (
   if (typeof password !== 'string') {
     return '비밀번호 입력을 확인해 주세요.';
   }
-  if (password.length < 8) {
+  if (password.length > 0 && password.length < 8) {
     return '비밀번호는 8자 이상이어야 합니다.';
   }
   return null;
