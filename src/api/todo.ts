@@ -3,7 +3,7 @@ import instance from '.';
 import { TodoProps } from '../@types/response';
 
 export const getTodoData = async () => {
-  const { data } = await instance.get(ApiUrl.todo);
+  const { data } = await instance.get<TodoProps[]>(ApiUrl.todo);
   return data;
 };
 
