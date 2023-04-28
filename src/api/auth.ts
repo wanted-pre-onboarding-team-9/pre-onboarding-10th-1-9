@@ -2,11 +2,11 @@ import { AxiosError } from 'axios';
 import ApiUrl from './ApiUrl';
 import instance from './index';
 import { Auth } from '../@types/auth';
-import { SignInResponse, SignUpResponse } from '../@types/response';
+import { SignInResponse } from '../@types/response';
 
 const signUp = async ({ email, password }: Auth) => {
   try {
-    const result = await instance.post<SignUpResponse>(ApiUrl.signUp, { email, password });
+    const result = await instance.post(ApiUrl.signUp, { email, password });
     if (result.status === 201) {
       return {
         success: true,
