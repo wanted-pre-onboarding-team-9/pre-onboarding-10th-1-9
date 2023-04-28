@@ -8,4 +8,12 @@ module.exports = {
   bracketSameLine: false,
   trailingComma: 'all',
   useTabs: false,
+  overrides: [
+    {
+      files: '*.yml',
+      options: {
+        parser: 'yaml',
+      },
+    },
+  ],
 };

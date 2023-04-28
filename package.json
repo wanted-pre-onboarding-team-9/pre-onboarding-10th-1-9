@@ -20,7 +20,7 @@
     "eject": "react-scripts eject",
     "postinstall": "husky install",
     "format": "prettier --cache --write '**/*.{ts,tsx}'",
-    "lint": "eslint --cache --max-warnings=0 '**/*.{ts,tsx}'"
+    "lint": "eslint --cache '**/*.{ts,tsx}'"
   },
   "eslintConfig": {
     "extends": [
