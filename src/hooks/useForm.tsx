@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
 type Name = string;
-type Value = React.InputHTMLAttributes<HTMLInputElement>['value'];
+type Value = string;
 type Validator = (value: Value) => string | null;
 
 const useForm = ({
