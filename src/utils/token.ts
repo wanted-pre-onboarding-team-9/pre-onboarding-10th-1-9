@@ -16,6 +16,10 @@ const token = {
       storage.set(KEY, newTokenValue);
     }
   },
+
+  clean: () => {
+    storage.remove(KEY);
+  },
 };
 
 export default token;
