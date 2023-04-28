@@ -1,9 +1,11 @@
 
 ![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&height=300&section=header&text=원티드%20프리온보딩%201차%20과제%209팀%20&fontSize=50)
 
+<p>
 <img src="https://img.shields.io/badge/React-61DAFB?style=flat-square&logo=React&logoColor=black"/>
 <img src="https://img.shields.io/badge/Typescript-3178C6?style=flat-square&logo=Typescript&logoColor=white"/>
 <img src="https://img.shields.io/badge/styled components-DB7093?style=flat-square&logo=styled-components&logoColor=white"/>
+</p>
 
 <br/>
 
@@ -91,6 +93,8 @@ $ npm start
 <br/>
 
 ## 💡 [Best Practice 선정 과정](https://github.com/wanted-pre-onboarding-team-9/pre-onboarding-10th-1-9/wiki/%F0%9F%93%9D-Pre-Onboarding-10th-9%ED%8C%80-%EA%B3%BC%EC%A0%9C-1---Wiki)
+
+Best Practice 선정 과정은 레포지토리 위키에 정리되어 있습니다.
 
 <br/>
 
