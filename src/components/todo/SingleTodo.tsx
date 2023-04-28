@@ -31,9 +31,11 @@ const SingleTodo = ({
       <S.TodoContainer>
         <CheckBox checked={todo.isCompleted} disabled />
         <Form onSubmit={onUpdateTodoText}>
-          <S.Input name="todo" value={value} onChange={onChange} />
-          <S.Button onClick={onUpdateTodoText}>제출</S.Button>
-          <S.Button onClick={() => clear()}>취소</S.Button>
+          <S.RowContainer>
+            <S.Input name="todo" value={value} onChange={onChange} />
+            <S.Button onClick={onUpdateTodoText}>제출</S.Button>
+            <S.Button onClick={() => clear()}>취소</S.Button>
+          </S.RowContainer>
         </Form>
       </S.TodoContainer>
     );

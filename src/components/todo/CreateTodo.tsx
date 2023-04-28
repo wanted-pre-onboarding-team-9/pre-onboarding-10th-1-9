@@ -31,13 +31,15 @@ const CreateTodo = ({ addNewTodo }: CreateTodoProps) => {
         <p> 투두리스트에 추가할 내용을 입력 후 추가 버튼을 눌러주세요.</p>
       </div>
       <Form onSubmit={createTodo}>
-        <S.Input
-          name="todoContent"
-          value={value}
-          placeholder="Please enter the contents"
-          onChange={onChange}
-        />
-        <S.Button disabled={value.length === 0}>추가</S.Button>
+        <S.RowContainer>
+          <S.Input
+            name="todoContent"
+            value={value}
+            placeholder="Please enter the contents"
+            onChange={onChange}
+          />
+          <S.Button disabled={value.length === 0}>추가</S.Button>
+        </S.RowContainer>
       </Form>
     </S.CreateTodoContainer>
   );
