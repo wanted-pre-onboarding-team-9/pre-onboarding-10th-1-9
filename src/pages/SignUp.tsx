@@ -21,7 +21,7 @@ const SignUp = () => {
 
   return (
     <S.Wrapper>
-      <S.MainImage
+      <S.Image
         src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600"
         alt="signup"
       />

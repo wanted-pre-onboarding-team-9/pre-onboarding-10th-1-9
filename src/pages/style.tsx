@@ -12,7 +12,30 @@ export const Wrapper = styled.div`
   margin: 0 auto;
 `;
 
-export const Title = styled.h1`
+export const MainTitle = styled.h1`
+  font-size: 3em;
+  font-weight: bold;
+  display: block;
+  text-align: center;
+`;
+
+export const MainButton = styled.button`
+  background: #4f46e5;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 8px;
+  border: none;
+  width: 100%;
+  height: 3rem;
+  margin-bottom: 1.5em;
+  cursor: pointer;
+
+  :hover {
+    background: #6666ff;
+  }
+`;
+
+export const Title = styled.h2`
   display: block;
   font-size: 2em;
   font-weight: bold;
@@ -21,7 +44,7 @@ export const Title = styled.h1`
   margin-block: 1em;
 `;
 
-export const MainImage = styled.img`
+export const Image = styled.img`
   display: block;
   margin: 0 auto;
   width: 4em;
