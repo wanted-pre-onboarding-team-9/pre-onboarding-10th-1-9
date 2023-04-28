@@ -1,14 +1,13 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import useForm from '../hooks/useForm';
+import { signUp } from '../api/auth';
+import { isInvalidEmail, isInvalidPassword } from '../utils/validators';
+
 import Form from '../components/common/Form';
 import EmailField from '../components/common/EmailField';
 import PasswordField from '../components/common/PasswordField';
 import ErrorMessage from '../components/common/ErrorMessage';
-
-import useForm from '../hooks/useForm';
-
-import { signUp } from '../api/auth';
-import { isInvalidEmail, isInvalidPassword } from '../utils/validators';
 
 import * as S from './style';
 
