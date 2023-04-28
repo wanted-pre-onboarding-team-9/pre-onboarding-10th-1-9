@@ -25,12 +25,12 @@ const SignIn = () => {
       setErrorMsg('잘못된 입력입니다.');
       return;
     }
-    const { message, isSuccess, access_token: accessToken } = await signIn({ email, password });
-    if (isSuccess && accessToken) {
-      token.set(accessToken);
+    const res = await signIn({ email, password });
+    if (res.isSuccess) {
+      token.set(res.data.access_token);
       navigate('/todo');
     } else {
-      setErrorMsg(message);
+      setErrorMsg(res.message);
     }
   };
 

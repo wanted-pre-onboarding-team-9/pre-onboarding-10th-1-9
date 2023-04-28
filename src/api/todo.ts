@@ -1,11 +1,13 @@
+import { AxiosError } from 'axios';
 import ApiUrl from './ApiUrl';
-import instance from '.';
+import instance, { createDefaultAPIError } from '.';
 import {
   CreateTodoResponse,
   DeleteTodoResponse,
   GetTodosReponse,
+  APIResponse,
   UpdateTodoResponse,
-} from '../@types/response';
+} from '../@types/api';
 import { Todo } from '../@types/todo';
 
 export const getTodoData = async () => {
@@ -24,7 +26,19 @@ export const updateTodo = async (todo: Todo) => {
   });
 };
 
-export const createTodoData = async (todo: Todo['todo']) => {
-  const { data } = await instance.post<CreateTodoResponse>(ApiUrl.todo, { todo });
-  return data;
+export const createTodoData = async (
+  todo: Todo['todo'],
+): Promise<APIResponse<CreateTodoResponse>> => {
+  try {
+    const response = await instance.post(ApiUrl.todo, { todo });
+    return { isSuccess: true, data: response.data };
+  } catch (error) {
+    if (error instanceof AxiosError && error.response?.data.statusCode === 401) {
+      return {
+        isSuccess: false,
+        message: '로그인이 필요한 기능입니다.',
+      };
+    }
+    return createDefaultAPIError(error);
+  }
 };

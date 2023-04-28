@@ -25,12 +25,11 @@ const SignUp = () => {
       setErrorMsg('잘못된 입력입니다.');
       return;
     }
-    const { message, isSuccess } = await signUp({ email, password });
-    if (isSuccess) {
-      setErrorMsg(message);
+    const res = await signUp({ email, password });
+    if (res.isSuccess) {
       navigate('/signin');
     } else {
-      setErrorMsg(message);
+      setErrorMsg(res.message);
     }
   };
 
