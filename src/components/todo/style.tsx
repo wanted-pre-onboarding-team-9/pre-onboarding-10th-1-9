@@ -1,14 +1,10 @@
 import styled from 'styled-components';
-import { TextInputStyleProps } from '../../@types/todo';
 
-export const CheckBoxContainer = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
+export const Checkbox = styled.input`
   margin-right: 5px;
 `;
 
-export const ButtonContainer = styled.button`
+export const Button = styled.button`
   background-color: #3f51b5;
   color: #fff;
   border: none;
@@ -22,7 +18,7 @@ export const ButtonContainer = styled.button`
   box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   transition: 0.3s;
   margin-left: 10px;
-  margin-bottom: 10px;
+  flex: none;
 
   &:disabled {
     opacity: 0.5;
@@ -39,19 +35,20 @@ export const ButtonContainer = styled.button`
   }
 `;
 
-export const TextInputContainer = styled.div<TextInputStyleProps>`
-  width: ${(props) => props.width};
+export const Input = styled.input`
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+  width: 100%;
   height: 40px;
+  padding: 5px 10px;
+`;
 
-  & > input {
-    border: none;
-    border-radius: 5px;
-    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    width: 100%;
-    height: 100%;
-    padding: 5px 10px;
-  }
+export const RowContainer = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
 `;
 
 export const CreateTodoContainer = styled.div`
@@ -66,6 +63,22 @@ export const CreateTodoContainer = styled.div`
     border-radius: 0.313rem;
     border: none;
     padding: 0px;
+  }
+`;
+
+export const TodoContainer = styled.li`
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+`;
+
+export const Label = styled.label`
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  & > span {
+    flex-grow: 1;
   }
 `;
 

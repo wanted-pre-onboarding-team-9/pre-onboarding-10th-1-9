@@ -1,10 +1,15 @@
+import { Todo } from './todo';
+
 export interface SignInResponse {
   access_token: string;
 }
 
-export interface TodoProps {
-  id: number | undefined;
-  todo: string;
-  isCompleted: boolean;
-  userId: number;
-}
+export type SignUpResponse = null;
+
+export type CreateTodoResponse = Todo;
+
+export type GetTodosReponse = Todo[];
+
+export type UpdateTodoResponse = Todo;
+
+export type DeleteTodoResponse = null;

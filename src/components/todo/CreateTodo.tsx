@@ -1,26 +1,19 @@
-import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Button from './Button';
-import TextInput from './TextInput';
-import { CreateTodoContainer, LogoutButton, TodoLogoutContainer } from './style';
 import { createTodoData } from '../../api/todo';
 import { CreateTodoProps } from '../../@types/todo';
-import { TodoProps } from '../../@types/response';
 import token from '../../utils/token';
+import useInput from '../../hooks/useInput';
+import Form from '../common/Form';
+import * as S from './style';
 
 const CreateTodo = ({ addNewTodo }: CreateTodoProps) => {
+  const { value, onChange, clear } = useInput('');
   const navigate = useNavigate();
-  const [todoContent, setTodoContent] = useState<string>('');
 
-  const createTodo = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    await createTodoData(todoContent)?.then((res: unknown) => {
-      if (res) {
-        const newTodo = res as TodoProps;
-        addNewTodo(newTodo);
-        setTodoContent('');
-      }
-    });
+  const createTodo = async () => {
+    const newTodo = await createTodoData(value);
+    addNewTodo(newTodo);
+    clear();
   };
 
   const onClickLogout = () => {
@@ -29,26 +22,26 @@ const CreateTodo = ({ addNewTodo }: CreateTodoProps) => {
   };
 
   return (
-    <CreateTodoContainer>
+    <S.CreateTodoContainer>
       <div>
-        <TodoLogoutContainer>
+        <S.TodoLogoutContainer>
           <h2>Todo List</h2>
-          <LogoutButton onClick={onClickLogout}>로그아웃</LogoutButton>
-        </TodoLogoutContainer>
+          <S.LogoutButton onClick={onClickLogout}>로그아웃</S.LogoutButton>
+        </S.TodoLogoutContainer>
         <p> 투두리스트에 추가할 내용을 입력 후 추가 버튼을 눌러주세요.</p>
       </div>
-      <form onSubmit={createTodo}>
-        <TextInput
-          name="todoContent"
-          value={todoContent}
-          placeholder="Please enter the contents"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setTodoContent(e.target.value);
-          }}
-        />
-        <Button disabled={todoContent?.length === 0} text="추가" />
-      </form>
-    </CreateTodoContainer>
+      <Form onSubmit={createTodo}>
+        <S.RowContainer>
+          <S.Input
+            name="todoContent"
+            value={value}
+            placeholder="Please enter the contents"
+            onChange={onChange}
+          />
+          <S.Button disabled={value.length === 0}>추가</S.Button>
+        </S.RowContainer>
+      </Form>
+    </S.CreateTodoContainer>
   );
 };
 

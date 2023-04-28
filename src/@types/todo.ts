@@ -1,15 +1,20 @@
-import { TodoProps } from './response';
+export interface Todo {
+  id: number;
+  todo: string;
+  isCompleted: boolean;
+  userId: number;
+}
 
 export interface CheckBoxProps {
   className?: string;
   checked: boolean;
-  onClick: (e: React.MouseEvent<HTMLInputElement>) => void;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  disabled?: boolean;
 }
 
 export interface ButtonProps {
   onClick?: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  text: string;
+  children?: React.ReactNode;
   disabled?: boolean;
 }
 
@@ -22,17 +27,14 @@ export interface TextInputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-export interface TextInputStyleProps {
-  width?: string;
-}
-
 export interface SingleTodoProps {
-  editingTodoId: number | null;
-  todoData: TodoProps;
-  updateEditingTodoId: (targetId: number | null) => void;
-  filterDeletedTodo: (targetId: number) => void;
+  todo: Todo;
+  updateRevisedTodo: (targetId: Todo['id'], newTodo: Todo) => void;
+  onClickDelete: (id: Todo['id']) => void;
+  isEditing: boolean;
+  setEditingId: React.Dispatch<React.SetStateAction<Todo['id'] | null>>;
 }
 
 export interface CreateTodoProps {
-  addNewTodo: (newTodo: TodoProps) => void;
+  addNewTodo: (newTodo: Todo) => void;
 }
