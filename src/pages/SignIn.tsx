@@ -45,9 +45,9 @@ const SignIn = () => {
       <S.Title>로그인을 해주세요.</S.Title>
       <Form onSubmit={onSignIn}>
         <EmailField value={values.email} onChange={onChange} />
-        <ErrorMessage message={errors.email} />
+        <ErrorMessage message={values.email.length === 0 ? '' : errors.email} />
         <PasswordField value={values.password} onChange={onChange} />
-        <ErrorMessage message={errors.password} />
+        <ErrorMessage message={values.password.length === 0 ? '' : errors.password} />
         <S.Button type="submit" data-testid="signin-button" disabled={isError}>
           로그인
         </S.Button>
