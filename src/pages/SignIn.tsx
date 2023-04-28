@@ -7,11 +7,11 @@ import ErrorMessage from '../components/form/ErrorMessage';
 
 import useForm from '../hooks/useForm';
 
+import { signIn } from '../api/auth';
+import token from '../utils/token';
 import { isInvalidEmail, isInvalidPassword } from '../utils/validators';
 
 import * as S from './style';
-import { signIn } from '../api/auth';
-import token from '../utils/token';
 
 const SignIn = () => {
   const { values, errors, isError, onChange } = useForm({
@@ -27,8 +27,8 @@ const SignIn = () => {
       setErrorMsg('잘못된 입력입니다.');
       return;
     }
-    const { message, success, access_token: accessToken } = await signIn({ email, password });
-    if (success && accessToken) {
+    const { message, isSuccess, access_token: accessToken } = await signIn({ email, password });
+    if (isSuccess && accessToken) {
       token.set(accessToken);
       navigate('/todo');
     } else {
