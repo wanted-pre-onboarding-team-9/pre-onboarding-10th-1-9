@@ -3,8 +3,7 @@ import Button from './Button';
 import TextInput from './TextInput';
 import { CreateTodoContainer } from './style';
 import { createTodoData } from '../../api/todo';
-import { CreateTodoProps } from '../../@types/todo';
-import { TodoProps } from '../../@types/response';
+import { CreateTodoProps, Todo } from '../../@types/todo';
 
 const CreateTodo = ({ addNewTodo }: CreateTodoProps) => {
   const [todoContent, setTodoContent] = useState<string>('');
@@ -13,7 +12,7 @@ const CreateTodo = ({ addNewTodo }: CreateTodoProps) => {
     event.preventDefault();
     await createTodoData(todoContent)?.then((res: unknown) => {
       if (res) {
-        const newTodo = res as TodoProps;
+        const newTodo = res as Todo;
         addNewTodo(newTodo);
         setTodoContent('');
       }

@@ -1,4 +1,9 @@
-import { TodoProps } from './response';
+export interface Todo {
+  id?: number;
+  todo: string;
+  isCompleted: boolean;
+  userId: number;
+}
 
 export interface CheckBoxProps {
   className?: string;
@@ -28,11 +33,11 @@ export interface TextInputStyleProps {
 
 export interface SingleTodoProps {
   editingTodoId: number | null;
-  todoData: TodoProps;
+  todoData: Todo;
   updateEditingTodoId: (targetId: number | null) => void;
   filterDeletedTodo: (targetId: number) => void;
 }
 
 export interface CreateTodoProps {
-  addNewTodo: (newTodo: TodoProps) => void;
+  addNewTodo: (newTodo: Todo) => void;
 }

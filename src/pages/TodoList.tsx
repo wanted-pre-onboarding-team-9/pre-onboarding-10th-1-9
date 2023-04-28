@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { TodoProps } from '../@types/response';
+import { Todo } from '../@types/todo';
 import SingleTodo from '../components/todo/SingleTodo';
 import CreateTodo from '../components/todo/CreateTodo';
 import { getTodoData, removeTodo } from '../api/todo';
 import useInput from '../hooks/useInput';
 
 const TodoList = () => {
-  const [todos, setTodos] = useState<TodoProps[]>([]);
+  const [todos, setTodos] = useState<Todo[]>([]);
 
   useEffect(() => {
     (async () => {
@@ -21,13 +21,13 @@ const TodoList = () => {
     isCompleted: false,
     userId: 0,
   });
-  const addNewTodo = (newTodo: TodoProps) => {
+  const addNewTodo = (newTodo: Todo) => {
     setTodos((prev) => {
       if (!prev) return prev;
       return [...prev, newTodo];
     });
   };
-  const updateRevisedTodo = (targetId: number, newTodo: TodoProps) => {
+  const updateRevisedTodo = (targetId: number, newTodo: Todo) => {
     setTodos((prevTodos) => {
       if (!prevTodos) return prevTodos;
       const newTodos = prevTodos.map((prevTodo) => {
@@ -54,7 +54,7 @@ const TodoList = () => {
         <CreateTodo addNewTodo={addNewTodo} />
         <ul style={{ paddingLeft: '0px' }}>
           {todos &&
-            todos?.map((todo: TodoProps) => (
+            todos?.map((todo: Todo) => (
               <SingleTodo
                 key={todo.id}
                 todo={todo}

@@ -1,16 +1,16 @@
-import { TodoProps } from '../../@types/response';
+import { Todo } from '../../@types/todo';
 import TextInput from './TextInput';
 import CheckBox from './CheckBox';
 import { updateTodo } from '../../api/todo';
 import Button from './Button';
 
 interface SingleTodoProps {
-  todo: TodoProps;
-  updateRevisedTodo: (targetId: number, newTodo: TodoProps) => void;
+  todo: Todo;
+  updateRevisedTodo: (targetId: number, newTodo: Todo) => void;
   onClickDelete: (id: number) => void;
-  form: TodoProps;
+  form: Todo;
   onChangeForm: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  setForm: React.Dispatch<React.SetStateAction<TodoProps>>;
+  setForm: React.Dispatch<React.SetStateAction<Todo>>;
   clear: () => void;
 }
 
@@ -23,7 +23,7 @@ const SingleTodo = ({
   setForm,
   clear,
 }: SingleTodoProps) => {
-  const onUpdateTodo = async (data: TodoProps) => {
+  const onUpdateTodo = async (data: Todo) => {
     await updateTodo(data);
     if (data?.id) updateRevisedTodo(data.id, data);
     clear();

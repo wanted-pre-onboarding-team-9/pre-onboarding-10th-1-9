@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { TodoProps } from '../@types/response';
+import { Todo } from '../@types/todo';
 
-// type FormProps = AuthProps | TodoProps;
+// type FormProps = AuthProps | Todo;
 
-export default function useInput(initialState: TodoProps) {
+export default function useInput(initialState: Todo) {
   const [form, setForm] = useState(initialState);
 
   const onChangeForm = (e: React.ChangeEvent<HTMLInputElement>) => {
