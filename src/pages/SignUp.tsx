@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Form from '../components/form/Form';
 import EmailField from '../components/form/EmailField';
@@ -17,19 +18,20 @@ const SignUp = () => {
     validators: { email: isInvalidEmail, password: isInvalidPassword },
   });
   const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState('');
 
   const onSignUp = async () => {
     const { email, password } = values;
     if (typeof email !== 'string' || typeof password !== 'string') {
-      alert('[ERROR] 잘못된 입력입니다.');
+      setErrorMsg('잘못된 입력입니다.');
       return;
     }
     const { message, success } = await signUp({ email, password });
     if (success) {
-      alert(message);
+      setErrorMsg(message);
       navigate('/signin');
     } else {
-      alert(message);
+      setErrorMsg(message);
     }
   };
 
@@ -48,6 +50,7 @@ const SignUp = () => {
         <S.Button type="submit" data-testid="signup-button" disabled={isError}>
           회원가입
         </S.Button>
+        <ErrorMessage message={errorMsg} />
       </Form>
       <S.NavigatorText to="/signin">로그인 하러가기</S.NavigatorText>
     </S.Wrapper>

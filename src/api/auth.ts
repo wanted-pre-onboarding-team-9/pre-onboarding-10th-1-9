@@ -13,15 +13,15 @@ const signUp = async ({ email, password }: Auth) => {
         message: '회원가입이 완료되었습니다.',
       };
     }
-    throw new Error('[ERROR] 잘못된 입력 입니다.');
+    throw new Error('잘못된 입력 입니다.');
   } catch (error) {
     if (error instanceof AxiosError) {
       return {
         success: false,
-        message: `[ERROR] ${error.response?.data.message}`,
+        message: error.response?.data.message,
       };
     }
-    return { success: false, message: error };
+    return { success: false, message: '알 수 없는 에러입니다.' };
   }
 };
 
@@ -31,21 +31,21 @@ const signIn = async ({ email, password }: Auth) => {
     if (result.status === 200) {
       return { success: true, access_token: result.data.access_token };
     }
-    throw new Error('[ERROR] 잘못된 입력 입니다.');
+    throw new Error('잘못된 입력 입니다.');
   } catch (error) {
     if (error instanceof AxiosError) {
       if (error.response?.data.statusCode === 401) {
         return {
           success: false,
-          message: '[ERROR] 잘못된 비밀번호 입니다.',
+          message: '잘못된 비밀번호 입니다.',
         };
       }
       return {
         success: false,
-        message: `[ERROR] ${error.response?.data.message}`,
+        message: error.response?.data.message,
       };
     }
-    return { success: false, message: error };
+    return { success: false, message: '알 수 없는 에러입니다.' };
   }
 };
 
