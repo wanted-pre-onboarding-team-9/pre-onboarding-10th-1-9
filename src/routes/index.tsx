@@ -2,7 +2,6 @@ import React from 'react';
 import { createBrowserRouter } from 'react-router-dom';
 import { Main, TodoList, SignUp, SignIn } from '../pages';
 import Auth from './Auth';
-import todoLoader from './todoLoader';
 
 const router = createBrowserRouter([
   {
@@ -24,7 +23,6 @@ const router = createBrowserRouter([
       {
         path: 'todo',
         element: <TodoList />,
-        loader: todoLoader,
       },
     ],
   },

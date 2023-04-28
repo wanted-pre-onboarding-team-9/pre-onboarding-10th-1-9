@@ -1,14 +1,20 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { TodoProps } from '../@types/response';
 import SingleTodo from '../components/todo/SingleTodo';
 import CreateTodo from '../components/todo/CreateTodo';
-import { removeTodo } from '../api/todo';
+import { getTodoData, removeTodo } from '../api/todo';
 import useInput from '../hooks/useInput';
 
 const TodoList = () => {
-  const loaderData = useLoaderData() as TodoProps[];
-  const [todos, setTodos] = useState<TodoProps[] | null>(loaderData);
+  const [todos, setTodos] = useState<TodoProps[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const data = await getTodoData();
+      setTodos(data);
+    })();
+  }, []);
+
   const { form, onChangeForm, setForm, clear } = useInput({
     id: undefined,
     todo: '',
