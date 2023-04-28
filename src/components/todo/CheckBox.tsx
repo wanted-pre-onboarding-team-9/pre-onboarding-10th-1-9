@@ -1,12 +1,16 @@
 import React from 'react';
 import { CheckBoxProps } from '../../@types/todo';
-import { CheckBoxContainer } from './style';
+import * as S from './style';
 
-const CheckBox = ({ className, checked, onChange, onClick }: CheckBoxProps) => {
+const CheckBox = ({ className, checked, disabled, onChange }: CheckBoxProps) => {
   return (
-    <CheckBoxContainer className={className}>
-      <input type="checkbox" defaultChecked={checked} onChange={onChange} onClick={onClick} />
-    </CheckBoxContainer>
+    <S.Checkbox
+      type="checkbox"
+      className={className}
+      defaultChecked={checked}
+      onChange={onChange}
+      disabled={disabled}
+    />
   );
 };
 

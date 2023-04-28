@@ -23,3 +23,9 @@ export const Error = styled.div`
   font-size: 0.8em;
   padding-top: 0.5em;
 `;
+
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  align-items: center;
+`;

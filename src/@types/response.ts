@@ -5,9 +5,8 @@ export interface SignInResponse {
 }
 
 export type SignUpResponse = null;
-export interface CreateTodoResponse {
-  todo: Todo['todo'];
-}
+
+export type CreateTodoResponse = Todo;
 
 export type GetTodosReponse = Todo[];
 

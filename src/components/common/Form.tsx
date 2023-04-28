@@ -1,17 +1,17 @@
-import { FormEventHandler } from 'react';
+import * as S from './style';
 
 const Form = ({
   children,
   onSubmit,
 }: Pick<React.FormHTMLAttributes<HTMLFormElement>, 'onSubmit' | 'children'>) => {
-  const handleSubmit: FormEventHandler<HTMLFormElement> = (event) => {
+  const handleSubmit: React.FormEventHandler<HTMLFormElement> = (event) => {
     event.preventDefault();
     if (onSubmit) {
       onSubmit(event);
     }
   };
 
-  return <form onSubmit={handleSubmit}>{children}</form>;
+  return <S.Form onSubmit={handleSubmit}>{children}</S.Form>;
 };
 
 export default Form;

@@ -1,42 +1,34 @@
-import { useState } from 'react';
-import Button from './Button';
-import TextInput from './TextInput';
-import { CreateTodoContainer } from './style';
 import { createTodoData } from '../../api/todo';
-import { CreateTodoProps, Todo } from '../../@types/todo';
+import { CreateTodoProps } from '../../@types/todo';
+import useInput from '../../hooks/useInput';
+import Form from '../common/Form';
+import * as S from './style';
 
 const CreateTodo = ({ addNewTodo }: CreateTodoProps) => {
-  const [todoContent, setTodoContent] = useState<string>('');
+  const { value, onChange, clear } = useInput('');
 
-  const createTodo = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    await createTodoData(todoContent)?.then((res: unknown) => {
-      if (res) {
-        const newTodo = res as Todo;
-        addNewTodo(newTodo);
-        setTodoContent('');
-      }
-    });
+  const createTodo = async () => {
+    const newTodo = await createTodoData(value);
+    addNewTodo(newTodo);
+    clear();
   };
 
   return (
-    <CreateTodoContainer>
+    <S.CreateTodoContainer>
       <div>
         <h2>Todo List</h2>
         <p> 투두리스트에 추가할 내용을 입력 후 추가 버튼을 눌러주세요.</p>
       </div>
-      <form onSubmit={createTodo}>
-        <TextInput
+      <Form onSubmit={createTodo}>
+        <S.Input
           name="todoContent"
-          value={todoContent}
+          value={value}
           placeholder="Please enter the contents"
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setTodoContent(e.target.value);
-          }}
+          onChange={onChange}
         />
-        <Button disabled={todoContent?.length === 0} text="추가" />
-      </form>
-    </CreateTodoContainer>
+        <S.Button disabled={value.length === 0}>추가</S.Button>
+      </Form>
+    </S.CreateTodoContainer>
   );
 };
 

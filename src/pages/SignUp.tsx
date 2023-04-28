@@ -1,9 +1,9 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import Form from '../components/form/Form';
-import EmailField from '../components/form/EmailField';
-import PasswordField from '../components/form/PasswordField';
-import ErrorMessage from '../components/form/ErrorMessage';
+import Form from '../components/common/Form';
+import EmailField from '../components/common/EmailField';
+import PasswordField from '../components/common/PasswordField';
+import ErrorMessage from '../components/common/ErrorMessage';
 
 import useForm from '../hooks/useForm';
 

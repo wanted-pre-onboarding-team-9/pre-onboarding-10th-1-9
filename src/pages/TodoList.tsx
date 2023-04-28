@@ -1,12 +1,12 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Todo } from '../@types/todo';
 import SingleTodo from '../components/todo/SingleTodo';
 import CreateTodo from '../components/todo/CreateTodo';
 import { getTodoData, removeTodo } from '../api/todo';
-import useInput from '../hooks/useInput';
 
 const TodoList = () => {
   const [todos, setTodos] = useState<Todo[]>([]);
+  const [editingId, setEditingId] = useState<Todo['id'] | null>(null);
 
   useEffect(() => {
     (async () => {
@@ -15,19 +15,14 @@ const TodoList = () => {
     })();
   }, []);
 
-  const { form, onChangeForm, setForm, clear } = useInput({
-    id: undefined,
-    todo: '',
-    isCompleted: false,
-    userId: 0,
-  });
   const addNewTodo = (newTodo: Todo) => {
     setTodos((prev) => {
       if (!prev) return prev;
       return [...prev, newTodo];
     });
   };
-  const updateRevisedTodo = (targetId: number, newTodo: Todo) => {
+
+  const updateRevisedTodo = (targetId: Todo['id'], newTodo: Todo) => {
     setTodos((prevTodos) => {
       if (!prevTodos) return prevTodos;
       const newTodos = prevTodos.map((prevTodo) => {
@@ -40,7 +35,7 @@ const TodoList = () => {
     });
   };
 
-  const onClickDelete = async (id: number) => {
+  const onClickDelete = async (id: Todo['id']) => {
     await removeTodo(id);
     setTodos((prevTodos) => {
       if (!prevTodos) return prevTodos;
@@ -53,19 +48,16 @@ const TodoList = () => {
       <div style={{ margin: 'auto' }}>
         <CreateTodo addNewTodo={addNewTodo} />
         <ul style={{ paddingLeft: '0px' }}>
-          {todos &&
-            todos?.map((todo: Todo) => (
-              <SingleTodo
-                key={todo.id}
-                todo={todo}
-                updateRevisedTodo={updateRevisedTodo}
-                onClickDelete={onClickDelete}
-                form={form}
-                onChangeForm={onChangeForm}
-                setForm={setForm}
-                clear={clear}
-              />
-            ))}
+          {todos.map((todo: Todo) => (
+            <SingleTodo
+              key={todo.id}
+              todo={todo}
+              updateRevisedTodo={updateRevisedTodo}
+              onClickDelete={onClickDelete}
+              isEditing={editingId === todo.id}
+              setEditingId={setEditingId}
+            />
+          ))}
         </ul>
       </div>
     </div>
