@@ -1,3 +1,5 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Form from '../components/form/Form';
 import EmailField from '../components/form/EmailField';
 import PasswordField from '../components/form/PasswordField';
@@ -5,6 +7,8 @@ import ErrorMessage from '../components/form/ErrorMessage';
 
 import useForm from '../hooks/useForm';
 
+import { signIn } from '../api/auth';
+import token from '../utils/token';
 import { isInvalidEmail, isInvalidPassword } from '../utils/validators';
 
 import * as S from './style';
@@ -14,9 +18,22 @@ const SignIn = () => {
     initialValues: { email: '', password: '' },
     validators: { email: isInvalidEmail, password: isInvalidPassword },
   });
+  const navigate = useNavigate();
+  const [errorMsg, setErrorMsg] = useState('');
 
-  const onSignIn = () => {
-    // TODO: 추가하기!
+  const onSignIn = async () => {
+    const { email, password } = values;
+    if (typeof email !== 'string' || typeof password !== 'string') {
+      setErrorMsg('잘못된 입력입니다.');
+      return;
+    }
+    const { message, isSuccess, access_token: accessToken } = await signIn({ email, password });
+    if (isSuccess && accessToken) {
+      token.set(accessToken);
+      navigate('/todo');
+    } else {
+      setErrorMsg(message);
+    }
   };
 
   return (
@@ -34,6 +51,7 @@ const SignIn = () => {
         <S.Button type="submit" data-testid="signin-button" disabled={isError}>
           로그인
         </S.Button>
+        <ErrorMessage message={errorMsg} />
       </Form>
       <S.NavigatorText to="/signup">회원가입 하러가기</S.NavigatorText>
     </S.Wrapper>

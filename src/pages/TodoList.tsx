@@ -7,7 +7,8 @@ import { removeTodo } from '../api/todo';
 import useInput from '../hooks/useInput';
 
 const TodoList = () => {
-  const [todos, setTodos] = useState<TodoProps[] | null>(useLoaderData() as TodoProps[]);
+  const loaderData = useLoaderData() as TodoProps[];
+  const [todos, setTodos] = useState<TodoProps[] | null>(loaderData);
   const { form, onChangeForm, setForm, clear } = useInput({
     id: undefined,
     todo: '',

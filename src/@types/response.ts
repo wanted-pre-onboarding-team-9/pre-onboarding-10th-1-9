@@ -1,6 +1,5 @@
-export interface AuthProps {
-  email: string;
-  password: string;
+export interface SignInResponse {
+  access_token: string;
 }
 
 export interface TodoProps {
